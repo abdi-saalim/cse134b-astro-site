@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+---
+
+<Layout title="Blog - Saalim">
+  <SectionTitle text="Blog Posts" />
+
+  <p>
+    Here are a few short posts about my experience as a Computer Engineering
+    student and my first steps with web development and Astro.
+  </p>
+
+  <ul>
+    <li style="margin-bottom: 10px;">
+      <a href="/blog/post1"><strong>My First Real Project</strong></a>
+      <br />
+      <span>Learning how it feels to build and finish a real software project.</span>
+    </li>
+    <li style="margin-bottom: 10px;">
+      <a href="/blog/post2"><strong>Why I Chose Computer Engineering</strong></a>
+      <br />
+      <span>Some reasons I decided to study Computer Engineering at UCSD.</span>
+    </li>
+    <li style="margin-bottom: 10px;">
+      <a href="/blog/post3"><strong>Learning Web Development with Astro</strong></a>
+      <br />
+      <span>Using Astro to build a static site with shared layouts and components.</span>
+    </li>
+  </ul>
+</Layout>
