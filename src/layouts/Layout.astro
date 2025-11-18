@@ -1,4 +1,5 @@
 ---
+import DarkModeToggle from "../components/DarkModeToggle.astro";
 const { title } = Astro.props;
 ---
 
@@ -8,24 +9,83 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <title>{title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+
+      body {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        color: #111;
+      }
+
+      html.dark body {
+        background-color: #111827;
+        color: #f9fafb;
+      }
+
+      main {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+      }
+
+      html.dark main {
+        background-color: #1f2933;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+      }
+
+      nav a {
+        margin-right: 12px;
+      }
+
+      button.theme-toggle {
+        padding: 4px 10px;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      /* View Transition animation for theme change */
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation: fade 250ms ease-out;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
-  <body style="max-width: 900px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif; background-color: #f5f5f5;">
+  <body>
     <header style="margin-bottom: 20px;">
       <nav style="margin-bottom: 10px;">
-        <a href="/" style="margin-right: 12px;">Home</a>
-        <a href="/about" style="margin-right: 12px;">About</a>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
         <a href="/blog">Blog</a>
+        <DarkModeToggle />
       </nav>
       <hr />
     </header>
 
-    <main style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);">
+    <main>
       <slot />
     </main>
 
-    <footer style="margin-top: 20px; text-align: center; font-size: 0.9rem; color: #555;">
+    <footer style="margin-top: 20px; text-align: center; font-size: 0.9rem;">
       <hr />
       <p>© 2025 Saalim | UCSD Computer Engineering Student</p>
     </footer>
   </body>
 </html>
+

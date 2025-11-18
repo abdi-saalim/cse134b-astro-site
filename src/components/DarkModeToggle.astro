@@ -1,0 +1,25 @@
+<button class="theme-toggle" type="button" id="theme-toggle">
+  Toggle Theme
+</button>
+
+<script>
+  const btn = document.getElementById("theme-toggle");
+
+  function toggleTheme() {
+    const root = document.documentElement;
+    root.classList.toggle("dark");
+  }
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      if (!document.startViewTransition) {
+        toggleTheme();
+        return;
+      }
+
+      document.startViewTransition(() => {
+        toggleTheme();
+      });
+    });
+  }
+</script>
